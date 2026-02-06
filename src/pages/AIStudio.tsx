@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, Wand2, Info } from 'lucide-react';
+import { Sparkles, Wand2, Info, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -11,6 +11,7 @@ import AIDesignPreview from '@/components/AIDesignPreview';
 import { products } from '@/data/products';
 import { Product, DesignComplexity, DESIGN_FEES } from '@/types';
 import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
 const examplePrompts = [
@@ -52,23 +53,41 @@ const AIStudio = () => {
 
     setIsGenerating(true);
     
-    // Simulate AI generation with a placeholder image
-    // In a real app, this would call the AI image generation API
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const { data, error } = await supabase.functions.invoke('generate-fashion-image', {
+        body: {
+          prompt: prompt.trim(),
+          clothingType: selectedProduct.category,
+          complexity,
+        },
+      });
 
-    // Using a placeholder that represents a "generated" design
-    const placeholderImages = [
-      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&auto=format',
-      'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&auto=format',
-      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format',
-      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&auto=format',
-    ];
+      if (error) {
+        console.error('Edge function error:', error);
+        throw new Error(error.message || 'Failed to generate design');
+      }
 
-    const randomImage = placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
-    setGeneratedImage(randomImage);
-    addAIDesign(prompt, randomImage);
-    setIsGenerating(false);
-    toast.success('Design generated successfully!');
+      if (!data?.success || !data?.imageUrl) {
+        throw new Error(data?.error || 'No image was generated');
+      }
+
+      setGeneratedImage(data.imageUrl);
+      addAIDesign(prompt, data.imageUrl);
+      toast.success('Design generated successfully!');
+    } catch (error) {
+      console.error('Generation error:', error);
+      const message = error instanceof Error ? error.message : 'Failed to generate design';
+      
+      if (message.includes('Rate limit')) {
+        toast.error('Too many requests. Please wait a moment and try again.');
+      } else if (message.includes('credits')) {
+        toast.error('AI credits exhausted. Please add credits to continue.');
+      } else {
+        toast.error(message);
+      }
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleExampleClick = (example: string) => {
