@@ -1,0 +1,68 @@
+import { Product } from '@/types';
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Essential Oversized Hoodie',
+    description: 'Premium cotton blend hoodie with a relaxed fit. Perfect canvas for AI customization.',
+    price: 79,
+    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&auto=format',
+    category: 'hoodie',
+  },
+  {
+    id: '2',
+    name: 'Minimalist Cotton Tee',
+    description: 'Classic crew neck t-shirt made from 100% organic cotton. Ideal for everyday wear.',
+    price: 39,
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format',
+    category: 'tshirt',
+  },
+  {
+    id: '3',
+    name: 'Urban Street Jacket',
+    description: 'Lightweight bomber jacket with modern street style aesthetics.',
+    price: 149,
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format',
+    category: 'jacket',
+  },
+  {
+    id: '4',
+    name: 'Flowy Summer Dress',
+    description: 'Elegant midi dress with a flattering silhouette. Perfect for any occasion.',
+    price: 99,
+    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&auto=format',
+    category: 'dress',
+  },
+  {
+    id: '5',
+    name: 'Vintage Washed Hoodie',
+    description: 'Acid-washed hoodie with a retro vibe. Pre-shrunk for the perfect fit.',
+    price: 89,
+    image: 'https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&auto=format',
+    category: 'hoodie',
+  },
+  {
+    id: '6',
+    name: 'Premium Graphic Tee',
+    description: 'High-quality t-shirt ready for your custom AI design.',
+    price: 45,
+    image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&auto=format',
+    category: 'tshirt',
+  },
+  {
+    id: '7',
+    name: 'Tailored Slim Pants',
+    description: 'Modern slim-fit pants with stretch comfort technology.',
+    price: 89,
+    image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format',
+    category: 'pants',
+  },
+  {
+    id: '8',
+    name: 'Tech Windbreaker',
+    description: 'Weather-resistant jacket with hidden pockets and sleek design.',
+    price: 129,
+    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format',
+    category: 'jacket',
+  },
+];
