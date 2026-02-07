@@ -1,7 +1,7 @@
 VIZIFIT – Customizable Clothing Platform
 
 Live Project URL:
-👉 https://vizifit.lovable.app
+👉https://preview--vizifit.lovable.app
 
 📌 About the Project
 
