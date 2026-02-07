@@ -1,73 +1,89 @@
-# Welcome to your Lovable project
+VIZIFIT – Customizable Clothing Platform
 
-## Project info
+Live Project URL:
+👉 https://vizifit.lovable.app
 
-**URL**:https://vizifit.lovable.app
+📌 About the Project
 
-## How can I edit this code?
+VIZIFIT is a modern web-based platform designed to provide users with an interactive and personalized clothing customization experience. The application allows customers to explore, design, and customize outfits with ease through a user-friendly interface.
 
-There are several ways of editing your application.
+This project was conceptualized, designed, and developed as part of an academic/portfolio initiative to demonstrate full-stack web development skills and UI/UX design capabilities.
 
-**Use Lovable**
+🚀 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Interactive clothing customization interface
 
-Changes made via Lovable will be committed automatically to this repo.
+User-friendly design and navigation
 
-**Use your preferred IDE**
+Real-time preview of customized outfits
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Responsive UI for mobile and desktop
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Clean and modern interface using React and Tailwind
 
-Follow these steps:
+Fast performance with Vite framework
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+🛠 Technologies Used
+
+This project is built using modern web technologies:
+
+Vite – Fast build tool
+
+React – Frontend framework
+
+TypeScript – Strongly typed JavaScript
+
+Tailwind CSS – Styling framework
+
+shadcn-ui – UI components
+
+👩‍💻 Developed By
+
+Project Owner:
+Sahana Gowda
+Ganavi B
+
+This project was independently developed and managed as part of a personal/academic project to demonstrate web development and UI design skills.
+
+📝 How to Run the Project Locally
+
+If you want to run or modify this project on your system:
+
+Step 1 – Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Step 2 – Navigate to the project folder
+cd vizifit
 
-# Step 3: Install the necessary dependencies.
-npm i
+Step 3 – Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Step 4 – Start development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The application will open in your local browser.
 
-**Use GitHub Codespaces**
+🌐 Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The project is deployed using Loveable platform.
 
-## What technologies are used for this project?
+To redeploy or publish updates:
 
-This project is built with:
+Open the project in Loveable
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Click Share → Publish
 
-## How can I deploy this project?
+🔗 Custom Domain Support
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+A custom domain can be connected from:
 
-## Can I connect a custom domain to my Lovable project?
+Project → Settings → Domains → Connect Domain
 
-Yes, you can!
+📬 Contact
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+For any queries or collaboration:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+GitHub: Sahanagowda8746
+        Ganavi B
+Project Link: https://vizifit.lovable.app
