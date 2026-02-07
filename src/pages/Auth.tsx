@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, User, ArrowRight } from 'lucide-react';
@@ -11,23 +11,30 @@ import { toast } from 'sonner';
 
 const Auth = () => {
   const navigate = useNavigate();
-  const { login, signup } = useAuth();
+  const { login, signup, user, isLoading: authLoading } = useAuth();
 
   const [loginForm, setLoginForm] = useState({ email: '', password: '' });
   const [signupForm, setSignupForm] = useState({ name: '', email: '', password: '' });
   const [isLoading, setIsLoading] = useState(false);
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user && !authLoading) {
+      navigate('/');
+    }
+  }, [user, authLoading, navigate]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const success = await login(loginForm.email, loginForm.password);
+    const result = await login(loginForm.email, loginForm.password);
     
-    if (success) {
+    if (result.success) {
       toast.success('Welcome back!');
       navigate('/');
     } else {
-      toast.error('Invalid email or password');
+      toast.error(result.error || 'Invalid email or password');
     }
     
     setIsLoading(false);
@@ -43,17 +50,37 @@ const Auth = () => {
       return;
     }
 
-    const success = await signup(signupForm.email, signupForm.password, signupForm.name);
+    if (signupForm.password.length < 6) {
+      toast.error('Password must be at least 6 characters');
+      setIsLoading(false);
+      return;
+    }
+
+    const result = await signup(signupForm.email, signupForm.password, signupForm.name);
     
-    if (success) {
-      toast.success('Account created successfully!');
-      navigate('/');
+    if (result.success) {
+      if (result.error) {
+        // This means email confirmation is required
+        toast.info(result.error);
+      } else {
+        toast.success('Account created successfully!');
+        navigate('/');
+      }
     } else {
-      toast.error('Email already exists');
+      toast.error(result.error || 'Failed to create account');
     }
     
     setIsLoading(false);
   };
+
+  // Show loading state while checking auth
+  if (authLoading) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse text-muted-foreground">Loading...</div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen flex items-center justify-center py-12 px-4">
@@ -167,8 +194,10 @@ const Auth = () => {
                       value={signupForm.password}
                       onChange={(e) => setSignupForm({ ...signupForm, password: e.target.value })}
                       required
+                      minLength={6}
                     />
                   </div>
+                  <p className="text-xs text-muted-foreground">Minimum 6 characters</p>
                 </div>
 
                 <Button
