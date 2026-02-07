@@ -50,7 +50,8 @@ This project was independently developed and managed as part of a personal/acade
 If you want to run or modify this project on your system:
 
 Step 1 – Clone the repository
-git clone <YOUR_GIT_URL>
+git clone https://github.com/Sahanagowda8746/VIZIFIT-1.git
+
 
 Step 2 – Navigate to the project folder
 cd vizifit
