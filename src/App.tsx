@@ -8,6 +8,8 @@ import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
+import Collections from "./pages/Collections";
+import CollectionDetail from "./pages/CollectionDetail";
 import AIStudio from "./pages/AIStudio";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
@@ -29,6 +31,8 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/collections" element={<Collections />} />
+              <Route path="/collections/:id" element={<CollectionDetail />} />
               <Route path="/ai-studio" element={<AIStudio />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />

@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import FeaturedProducts from '@/components/FeaturedProducts';
+import FeaturedCollections from '@/components/FeaturedCollections';
 import { motion } from 'framer-motion';
 import { Sparkles, Palette, Truck, Shield } from 'lucide-react';
 
@@ -30,6 +31,7 @@ const Index = () => {
   return (
     <main>
       <Hero />
+      <FeaturedCollections />
       <FeaturedProducts />
 
       {/* Features Section */}

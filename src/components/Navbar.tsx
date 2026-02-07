@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Sparkles, User, Menu, X } from 'lucide-react';
+import { ShoppingBag, Sparkles, User, Menu, X, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
@@ -15,6 +15,7 @@ const Navbar = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
+    { path: '/collections', label: 'Collections', icon: Layers },
     { path: '/ai-studio', label: 'AI Design Studio', icon: Sparkles },
     { path: '/orders', label: 'My Orders' },
   ];
