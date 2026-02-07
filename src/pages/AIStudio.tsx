@@ -54,6 +54,15 @@ const AIStudio = () => {
     setIsGenerating(true);
     
     try {
+      // Get the current session for authentication
+      const { data: sessionData } = await supabase.auth.getSession();
+      
+      if (!sessionData.session) {
+        toast.error('Please log in to generate designs');
+        setIsGenerating(false);
+        return;
+      }
+
       const { data, error } = await supabase.functions.invoke('generate-fashion-image', {
         body: {
           prompt: prompt.trim(),
